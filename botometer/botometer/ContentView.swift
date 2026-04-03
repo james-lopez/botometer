@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 @MainActor
 class ViewModel: ObservableObject {
@@ -14,7 +15,7 @@ class ViewModel: ObservableObject {
 
     private func load() async {
         // Check ~/.claude exists
-        let claudeDir = FileManager.default.homeDirectoryForCurrentUser
+        let claudeDir = realHomeDirectory()
             .appendingPathComponent(".claude")
         guard FileManager.default.fileExists(atPath: claudeDir.path) else {
             state = .notInstalled
@@ -33,11 +34,6 @@ class ViewModel: ObservableObject {
             return
         }
 
-        if creds.isExpired {
-            state = .tokenExpired
-            return
-        }
-
         // Parse local session data (fast, local)
         let session = parseLocalSessions()
 
@@ -46,10 +42,12 @@ class ViewModel: ObservableObject {
             let utilization = try await fetchUtilization(token: creds.accessToken)
             state = .loaded(utilization: utilization, session: session)
             lastUpdated = Date()
+            WidgetCenter.shared.reloadAllTimelines()
         } catch AuthError.tokenExpired {
             state = .tokenExpired
+        } catch AuthError.networkError("429") {
+            state = .rateLimited
         } catch AuthError.networkError(let msg) {
-            // Show last known session data with an error note
             state = .apiError(msg)
         } catch {
             state = .apiError(error.localizedDescription)
@@ -89,6 +87,14 @@ struct ContentView: View {
                     title: "Session expired",
                     message: "Re-open Claude CLI to refresh your session.",
                     hint: "claude"
+                )
+            case .rateLimited:
+                StatusView(
+                    icon: "gauge.with.dots.needle.33percent",
+                    iconColor: .orange,
+                    title: "Rate limit reached",
+                    message: "You've hit your usage limit. Check back when it resets.",
+                    hint: "HTTP 429"
                 )
             case .apiError(let msg):
                 StatusView(
@@ -141,17 +147,19 @@ struct WidgetHeader: View {
     let isOnline: Bool
 
     var body: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "waveform.circle.fill")
-                .font(.title3)
-                .foregroundStyle(.purple.gradient)
-            Text("Claude Usage")
+        ZStack {
+            Text("Bot-o-Meter")
                 .font(.headline)
                 .fontWeight(.semibold)
-            Spacer()
-            Circle()
-                .fill(isOnline ? .green : .orange)
-                .frame(width: 7, height: 7)
+                .frame(maxWidth: .infinity, alignment: .center)
+
+            HStack {
+                Circle()
+                    .fill(isOnline ? Color.green : Color.orange)
+                    .frame(width: 7, height: 7)
+                Spacer()
+                BitCharacter(color: dialOrange)
+            }
         }
     }
 }
@@ -223,18 +231,22 @@ struct UsageView: View {
             WidgetHeader(isOnline: true)
             Divider().opacity(0.3)
 
-            // Rate limit bars — mirrors /usage
-            if let weekly = utilization.seven_day {
-                LimitBar(label: "Weekly", limit: weekly, color: weeklyColor(weekly.utilization))
-            }
-            if let hourly = utilization.five_hour {
-                LimitBar(label: "5-Hour", limit: hourly, color: .blue)
-            }
-            if let opus = utilization.seven_day_opus {
-                LimitBar(label: "Opus (7d)", limit: opus, color: .purple)
-            }
-            if let sonnet = utilization.seven_day_sonnet {
-                LimitBar(label: "Sonnet (7d)", limit: sonnet, color: .indigo)
+            // Rate limit dials — triangle layout
+            VStack(spacing: 4) {
+                if let hourly = utilization.five_hour {
+                    GaugeDial(label: "5-Hour", pct: hourly.utilization, color: dialOrange, dialSize: 90, resetsAt: hourly.resetsAtDate)
+                        .frame(maxWidth: .infinity)
+                }
+                HStack(spacing: 0) {
+                    if let weekly = utilization.seven_day {
+                        GaugeDial(label: "Weekly", pct: weekly.utilization, color: dialRed, dialSize: 78, resetsAt: weekly.resetsAtDate)
+                            .frame(maxWidth: .infinity)
+                    }
+                    if let opus = utilization.seven_day_opus {
+                        GaugeDial(label: "Opus (7d)", pct: opus.utilization, color: dialPurple, dialSize: 78, resetsAt: opus.resetsAtDate)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
             }
 
             // Extra usage
@@ -255,56 +267,6 @@ struct UsageView: View {
         }
     }
 
-    func weeklyColor(_ pct: Double?) -> Color {
-        guard let pct else { return .green }
-        if pct >= 90 { return .red }
-        if pct >= 75 { return .orange }
-        return .green
-    }
-}
-
-// MARK: - Limit Bar
-
-struct LimitBar: View {
-    let label: String
-    let limit: RateLimit
-    let color: Color
-
-    var pct: Double { min(max((limit.utilization ?? 0) / 100, 0), 1) }
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
-                Text(label)
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.secondary)
-                Spacer()
-                Text(limit.utilization.map { "\(Int($0))%" } ?? "—")
-                    .font(.system(.caption, design: .monospaced))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(color.gradient)
-            }
-
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .fill(.white.opacity(0.1))
-                        .frame(height: 5)
-                    Capsule()
-                        .fill(color.gradient)
-                        .frame(width: geo.size.width * pct, height: 5)
-                }
-            }
-            .frame(height: 5)
-
-            if let resetsAt = limit.resetsAtDate {
-                Text("Resets \(resetsAt, style: .relative)")
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-            }
-        }
-    }
 }
 
 // MARK: - Extra Usage
@@ -337,53 +299,66 @@ struct SessionStatsRow: View {
     let session: SessionStats
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Label("LOCAL SESSIONS", systemImage: "internaldrive")
+        VStack(spacing: 8) {
+            // Top: output tokens — prominent
+            VStack(spacing: 2) {
+                Text(fmt(session.outputTokens))
+                    .font(.system(.title2, design: .monospaced))
+                    .fontWeight(.bold)
+                Text("output tokens")
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+            }
+            .frame(maxWidth: .infinity)
+
+            // Bottom row: cache read + API calls
+            HStack(spacing: 0) {
+                VStack(spacing: 2) {
+                    Text(fmt(session.cacheRead))
+                        .font(.system(.subheadline, design: .monospaced))
+                        .fontWeight(.semibold)
+                    Text("cache read")
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity)
+
+                VStack(spacing: 2) {
+                    Text("\(session.apiCalls)")
+                        .font(.system(.subheadline, design: .monospaced))
+                        .fontWeight(.semibold)
+                    Text("API calls")
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity)
+            }
+
+            Label("LOCAL SESSIONS · \(session.sessionCount)", systemImage: "internaldrive")
                 .font(.caption2)
                 .fontWeight(.semibold)
                 .foregroundStyle(.secondary)
-
-            HStack(spacing: 12) {
-                MiniStat(value: fmt(session.outputTokens), label: "output", icon: "arrow.up.circle", color: .purple)
-                MiniStat(value: fmt(session.cacheRead), label: "cache read", icon: "bolt.circle", color: .blue)
-                MiniStat(value: "\(session.apiCalls)", label: "calls", icon: "arrow.triangle.2.circlepath", color: .teal)
-            }
-        }
-    }
-
-    func fmt(_ n: Int) -> String {
-        if n >= 1_000_000 { return String(format: "%.1fM", Double(n) / 1_000_000) }
-        if n >= 1_000 { return String(format: "%.0fK", Double(n) / 1_000) }
-        return "\(n)"
-    }
-}
-
-struct MiniStat: View {
-    let value: String
-    let label: String
-    let icon: String
-    let color: Color
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 1) {
-            HStack(spacing: 3) {
-                Image(systemName: icon)
-                    .font(.caption2)
-                    .foregroundStyle(color.gradient)
-                Text(value)
-                    .font(.system(.caption, design: .monospaced))
-                    .fontWeight(.semibold)
-            }
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(.tertiary)
+                .frame(maxWidth: .infinity, alignment: .center)
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .padding()
-        .background(.black.opacity(0.4))
-        .preferredColorScheme(.dark)
+    GlassContainer {
+        UsageView(
+            utilization: Utilization(
+                five_hour: RateLimit(utilization: 42, resets_at: nil),
+                seven_day: RateLimit(utilization: 67, resets_at: nil),
+                seven_day_opus: RateLimit(utilization: 30, resets_at: nil),
+                seven_day_sonnet: nil,
+                extra_usage: nil
+            ),
+            session: SessionStats(inputTokens: 146, outputTokens: 12756, cacheRead: 3215270, cacheWrite: 168329, apiCalls: 76, sessionCount: 2),
+            lastUpdated: Date()
+        )
+    }
+    .frame(width: 300)
+    .padding()
+    .background(.black.opacity(0.4))
+    .preferredColorScheme(.dark)
 }

@@ -1,0 +1,72 @@
+name: botometer
+
+options:
+  bundleIdPrefix: com.jameslopez
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    ALWAYS_SEARCH_USER_PATHS: NO
+    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "1.0"
+
+schemes:
+  botometer:
+    build:
+      targets:
+        botometer: all
+        botometerWidget: all
+    run:
+      config: Debug
+      executable: botometer
+    archive:
+      config: Release
+
+targets:
+
+  botometer:
+    type: application
+    platform: macOS
+    sources:
+      - botometer
+      - Shared
+      - path: Shared/Assets.xcassets
+        type: resource
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jameslopez.botometer
+        DEVELOPMENT_TEAM: D2L7VP8LV8
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        INFOPLIST_KEY_NSHumanReadableCopyright: ""
+        CODE_SIGN_ENTITLEMENTS: botometer/botometer.entitlements
+        INFOPLIST_KEY_LSUIElement: YES
+        PRODUCT_NAME: botometer
+    dependencies:
+      - target: botometerWidget
+        embed: true
+        codeSign: true
+
+  botometerWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - botometerWidget
+      - Shared
+      - path: Shared/Assets.xcassets
+        type: resource
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jameslopez.botometer.widget
+        DEVELOPMENT_TEAM: D2L7VP8LV8
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Bot-o-Meter
+        SKIP_INSTALL: YES
+        CODE_SIGN_ENTITLEMENTS: botometerWidget/botometerWidget.entitlements

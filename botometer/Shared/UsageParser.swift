@@ -1,3 +1,5 @@
+
+
 import Foundation
 
 private struct MessageUsage: Codable {
@@ -19,15 +21,13 @@ private struct SessionEntry: Codable {
 
 func parseLocalSessions() -> SessionStats {
     var stats = SessionStats()
-    let claudeDir = FileManager.default.homeDirectoryForCurrentUser
+    let claudeDir = realHomeDirectory()
         .appendingPathComponent(".claude/projects")
 
     guard let projectDirs = try? FileManager.default.contentsOfDirectory(
         at: claudeDir, includingPropertiesForKeys: nil
     ) else { return stats }
 
-    let calendar = Calendar.current
-    let today = calendar.startOfDay(for: Date())
     let decoder = JSONDecoder()
 
     for dir in projectDirs {

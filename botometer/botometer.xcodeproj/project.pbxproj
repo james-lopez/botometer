@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0826C5A28E72F1640101D3B0 /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7AB294E51B88C8FAB43FE /* WidgetViews.swift */; };
+		328F72042468AFC654362434 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27DC4D43F12B99D2DC6832 /* APIClient.swift */; };
+		353EEB389624380C48E7A551 /* UsageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39B32E87D004F5D7E43634 /* UsageParser.swift */; };
+		43350C02A4107387DA9A500D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86292CA4776BECB46B1B0C9B /* Models.swift */; };
+		450AE8BCDC7204634444A8E9 /* BotometerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1E1A97E7E573AF21616218 /* BotometerApp.swift */; };
+		55972DA0FF7ADB88A02CD5E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20EAFA3EDA96205AAD37CB3B /* Assets.xcassets */; };
+		5979CF33B0FC031D60C2C503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB94A90FD28CE5B47AA3 /* Assets.xcassets */; };
+		602BD9BF8725902F4A6FE80A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86292CA4776BECB46B1B0C9B /* Models.swift */; };
+		8E189629186C46D60D0E035D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 509CC44949033FAFFBCC2714 /* Assets.xcassets */; };
+		A239F6DED3CE394F10D0A32D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27DC4D43F12B99D2DC6832 /* APIClient.swift */; };
+		BA61E02EB1A138511EAC5EF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765096E587C6D86AD99F0E9 /* ContentView.swift */; };
+		BAB1DF2CA1B600FC46719951 /* botometerWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CE20DE71DF568E62C5C53410 /* botometerWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF5845C9C7986E3E095AFF8D /* WidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A7AB294E51B88C8FAB43FE /* WidgetViews.swift */; };
+		CA5B737B3C06E931D175D95D /* BotometerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0F5324871EBFD0DC45E380 /* BotometerWidget.swift */; };
+		DAA00A352D411D3CDA673003 /* WidgetPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A604825FDE332CE2C417B3 /* WidgetPreviews.swift */; };
+		E8F497D91B690B46BCA037F3 /* UsageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F39B32E87D004F5D7E43634 /* UsageParser.swift */; };
+		F5684AA2253DF81750DFD1E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933FFB94A90FD28CE5B47AA3 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8A1E3C37EAA1CFBD3EAA4211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06335292FA6071BF084C8F23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8864CFA8D1537172399F6B14;
+			remoteInfo = botometerWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3358605730D2392740564BD9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BAB1DF2CA1B600FC46719951 /* botometerWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		20EAFA3EDA96205AAD37CB3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27A7AB294E51B88C8FAB43FE /* WidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetViews.swift; sourceTree = "<group>"; };
+		3765096E587C6D86AD99F0E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		384092C2A9EB372CFE98F58C /* botometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = botometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F39B32E87D004F5D7E43634 /* UsageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageParser.swift; sourceTree = "<group>"; };
+		509CC44949033FAFFBCC2714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C27DC4D43F12B99D2DC6832 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		86292CA4776BECB46B1B0C9B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8D0F5324871EBFD0DC45E380 /* BotometerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotometerWidget.swift; sourceTree = "<group>"; };
+		933FFB94A90FD28CE5B47AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C1E1A97E7E573AF21616218 /* BotometerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotometerApp.swift; sourceTree = "<group>"; };
+		CE20DE71DF568E62C5C53410 /* botometerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = botometerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9C80221CF9A2323CEB9967B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E9A604825FDE332CE2C417B3 /* WidgetPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetPreviews.swift; sourceTree = "<group>"; };
+		ED2DCD7F18B719DD2EC6AF26 /* botometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = botometer.entitlements; sourceTree = "<group>"; };
+		FE291426754009F932EC346F /* botometerWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = botometerWidget.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		28F1B7D80BD050E5C50C43B5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				384092C2A9EB372CFE98F58C /* botometer.app */,
+				CE20DE71DF568E62C5C53410 /* botometerWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		722E457A899FC19F416142F3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5C27DC4D43F12B99D2DC6832 /* APIClient.swift */,
+				933FFB94A90FD28CE5B47AA3 /* Assets.xcassets */,
+				86292CA4776BECB46B1B0C9B /* Models.swift */,
+				3F39B32E87D004F5D7E43634 /* UsageParser.swift */,
+				27A7AB294E51B88C8FAB43FE /* WidgetViews.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B269C6692F8EEAE03B6132E6 /* botometer */ = {
+			isa = PBXGroup;
+			children = (
+				509CC44949033FAFFBCC2714 /* Assets.xcassets */,
+				ED2DCD7F18B719DD2EC6AF26 /* botometer.entitlements */,
+				9C1E1A97E7E573AF21616218 /* BotometerApp.swift */,
+				3765096E587C6D86AD99F0E9 /* ContentView.swift */,
+				E9A604825FDE332CE2C417B3 /* WidgetPreviews.swift */,
+			);
+			path = botometer;
+			sourceTree = "<group>";
+		};
+		C79CCC37E59B895588BD0B52 = {
+			isa = PBXGroup;
+			children = (
+				B269C6692F8EEAE03B6132E6 /* botometer */,
+				D8DB8549990A684B6E5772B7 /* botometerWidget */,
+				722E457A899FC19F416142F3 /* Shared */,
+				28F1B7D80BD050E5C50C43B5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8DB8549990A684B6E5772B7 /* botometerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				20EAFA3EDA96205AAD37CB3B /* Assets.xcassets */,
+				FE291426754009F932EC346F /* botometerWidget.entitlements */,
+				8D0F5324871EBFD0DC45E380 /* BotometerWidget.swift */,
+				D9C80221CF9A2323CEB9967B /* Info.plist */,
+			);
+			path = botometerWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58436D57CE9D06A8EAD7FF5F /* botometer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 601E37155E639DD29C1970A4 /* Build configuration list for PBXNativeTarget "botometer" */;
+			buildPhases = (
+				B442D924470CF80B635748FB /* Sources */,
+				312B2410DF34ABA8F574FDD9 /* Resources */,
+				3358605730D2392740564BD9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				290D1AEA4E682B0609088328 /* PBXTargetDependency */,
+			);
+			name = botometer;
+			packageProductDependencies = (
+			);
+			productName = botometer;
+			productReference = 384092C2A9EB372CFE98F58C /* botometer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8864CFA8D1537172399F6B14 /* botometerWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0CC7D818E01874021674148 /* Build configuration list for PBXNativeTarget "botometerWidget" */;
+			buildPhases = (
+				295F84EFD6A8C3CB86410450 /* Sources */,
+				AE458E48D337F0097A56774D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = botometerWidget;
+			packageProductDependencies = (
+			);
+			productName = botometerWidget;
+			productReference = CE20DE71DF568E62C5C53410 /* botometerWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06335292FA6071BF084C8F23 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					58436D57CE9D06A8EAD7FF5F = {
+						DevelopmentTeam = D2L7VP8LV8;
+						ProvisioningStyle = Automatic;
+					};
+					8864CFA8D1537172399F6B14 = {
+						DevelopmentTeam = D2L7VP8LV8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 256DC76B21870BEA65717704 /* Build configuration list for PBXProject "botometer" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C79CCC37E59B895588BD0B52;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 28F1B7D80BD050E5C50C43B5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58436D57CE9D06A8EAD7FF5F /* botometer */,
+				8864CFA8D1537172399F6B14 /* botometerWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		312B2410DF34ABA8F574FDD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E189629186C46D60D0E035D /* Assets.xcassets in Resources */,
+				F5684AA2253DF81750DFD1E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE458E48D337F0097A56774D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55972DA0FF7ADB88A02CD5E8 /* Assets.xcassets in Resources */,
+				5979CF33B0FC031D60C2C503 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		295F84EFD6A8C3CB86410450 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A239F6DED3CE394F10D0A32D /* APIClient.swift in Sources */,
+				CA5B737B3C06E931D175D95D /* BotometerWidget.swift in Sources */,
+				602BD9BF8725902F4A6FE80A /* Models.swift in Sources */,
+				E8F497D91B690B46BCA037F3 /* UsageParser.swift in Sources */,
+				0826C5A28E72F1640101D3B0 /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B442D924470CF80B635748FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				328F72042468AFC654362434 /* APIClient.swift in Sources */,
+				450AE8BCDC7204634444A8E9 /* BotometerApp.swift in Sources */,
+				BA61E02EB1A138511EAC5EF8 /* ContentView.swift in Sources */,
+				43350C02A4107387DA9A500D /* Models.swift in Sources */,
+				353EEB389624380C48E7A551 /* UsageParser.swift in Sources */,
+				DAA00A352D411D3CDA673003 /* WidgetPreviews.swift in Sources */,
+				BF5845C9C7986E3E095AFF8D /* WidgetViews.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		290D1AEA4E682B0609088328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8864CFA8D1537172399F6B14 /* botometerWidget */;
+			targetProxy = 8A1E3C37EAA1CFBD3EAA4211 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		125A5205A5EDD3BBFA95E382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = botometer/botometer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D2L7VP8LV8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameslopez.botometer;
+				PRODUCT_NAME = botometer;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		56797376422F06D1A8F87142 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		598143A5B5E4D2A58EEAF40E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = botometerWidget/botometerWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D2L7VP8LV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = botometerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bot-o-Meter";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameslopez.botometer.widget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8246A914F844CC47D8F35461 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = botometer/botometer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D2L7VP8LV8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameslopez.botometer;
+				PRODUCT_NAME = botometer;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B37F13FBC328D4D139EEF945 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		CEE6BB337216C9FDC0382F11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = botometerWidget/botometerWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D2L7VP8LV8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = botometerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Bot-o-Meter";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jameslopez.botometer.widget;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		256DC76B21870BEA65717704 /* Build configuration list for PBXProject "botometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B37F13FBC328D4D139EEF945 /* Debug */,
+				56797376422F06D1A8F87142 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		601E37155E639DD29C1970A4 /* Build configuration list for PBXNativeTarget "botometer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8246A914F844CC47D8F35461 /* Debug */,
+				125A5205A5EDD3BBFA95E382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A0CC7D818E01874021674148 /* Build configuration list for PBXNativeTarget "botometerWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598143A5B5E4D2A58EEAF40E /* Debug */,
+				CEE6BB337216C9FDC0382F11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06335292FA6071BF084C8F23 /* Project object */;
+}

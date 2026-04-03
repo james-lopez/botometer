@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 // MARK: - API Models
 
@@ -42,6 +43,15 @@ struct SessionStats {
 
 // MARK: - App State
 
+// MARK: - Widget Timeline Entry
+
+struct UsageEntry: TimelineEntry {
+    let date: Date
+    let state: WidgetState
+}
+
+// MARK: - Auth
+
 enum AuthError: Error {
     case claudeNotInstalled
     case notLoggedIn
@@ -62,6 +72,7 @@ enum WidgetState {
     case notInstalled       // ~/.claude not found
     case notLoggedIn        // no keychain entry
     case tokenExpired       // token exists but stale
+    case rateLimited        // HTTP 429
     case loaded(utilization: Utilization, session: SessionStats)
     case apiError(String)   // got creds, but API failed (offline, etc.)
 }
